@@ -1,0 +1,107 @@
+<div id="view-list-users" class="py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+      <h2 class="h3 fw-bold mb-1">Directorio de Usuarios</h2>
+      <p class="text-secondary small mb-0">Gestione y administre los accesos y roles registrados en la plataforma.</p>
+    </div>
+    <a href="/users/add" class="btn btn-primary d-inline-flex align-items-center gap-2">
+      <i class="bi bi-person-plus-fill"></i> Crear Usuario
+    </a>
+  </div>
+
+  {{#if users}}
+  <div class="card border rounded-3 shadow-sm overflow-hidden">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light border-bottom">
+          <tr>
+            <th class="ps-4">N°</th>
+            <th>Usuario</th>
+            <th>Correo Electrónico</th>
+            <th class="text-end pe-4">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          {{#each users}}
+          <tr>
+            <!-- ID VISUAL SECUENCIAL GENÉRICO (1, 2, 3...) -->
+            <td class="ps-4 fw-mono text-secondary small">#{{#addOne @index}}{{/addOne}}</td>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <div class="avatar-circle">{{firstname.[0]}}{{lastname.[0]}}</div>
+                <div class="fw-semibold">{{firstname}} {{lastname}}</div>
+              </div>
+            </td>
+            <td class="text-secondary">{{email}}</td>
+            <td class="text-end pe-4">
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-info btn-ver-detalle" 
+                        data-id="{{id}}" 
+                        data-firstname="{{firstname}}" 
+                        data-lastname="{{lastname}}" 
+                        data-email="{{email}}"
+                        title="Ver Detalles">
+                  <i class="bi bi-eye"></i>
+                </button>
+                <a href="/users/update/{{id}}" class="btn btn-outline-secondary" title="Editar">
+                  <i class="bi bi-pencil"></i>
+                </a>
+                <button class="btn btn-outline-danger btn-eliminar" data-id-user="{{id}}" title="Eliminar">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {{else}}
+  <div class="card border rounded-3 text-center p-5 bg-body-tertiary shadow-sm">
+    <div class="py-4">
+      <i class="bi bi-folder-x fs-1 text-secondary mb-2"></i>
+      <h4 class="fw-bold">No hay usuarios registrados</h4>
+      <p class="text-secondary small mb-3">La base de datos actual no contiene registros.</p>
+      <a href="/users/add" class="btn btn-primary btn-sm">Agregar el primer usuario</a>
+    </div>
+  </div>
+  {{/if}}
+</div>
+
+<!-- MODAL DE DETALLE DEL USUARIO -->
+<div class="modal fade" id="userDetailModal" tabindex="-1" aria-labelledby="userDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-bottom">
+        <h5 class="modal-title fw-bold" id="userDetailModalLabel"><i class="bi bi-person-vcard me-2 text-primary"></i>Ficha del Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 p-3 bg-body-tertiary rounded border">
+          <label class="text-secondary small fw-semibold d-block">ID TÉCNICO REGISTRADO (SISTEMA)</label>
+          <code class="fs-6 text-primary fw-bold text-break" id="modal-user-id"></code>
+        </div>
+        <div class="row g-3">
+          <div class="col-6">
+            <label class="text-secondary small fw-semibold d-block">Nombre</label>
+            <span class="fw-semibold" id="modal-user-firstname"></span>
+          </div>
+          <div class="col-6">
+            <label class="text-secondary small fw-semibold d-block">Apellido</label>
+            <span class="fw-semibold" id="modal-user-lastname"></span>
+          </div>
+          <div class="col-12">
+            <label class="text-secondary small fw-semibold d-block">Correo Electrónico</label>
+            <span class="fw-semibold" id="modal-user-email"></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-top">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script defer src="/assets/js/listUsers.js"></script>
