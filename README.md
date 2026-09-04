@@ -81,7 +81,11 @@ CoreApp Enterprise es una aplicación web orientada a la gestión centralizada d
 
 ## Enlaces y Repositorio
 
-- **Repositorio oficial:** [GitHub - CoreApp Enterprise](<URL_DEL_REPOSITORIO>)
+[![Repositorio oficial en GitHub](https://img.shields.io/badge/GitHub-Repositorio%20oficial-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rondons-26/abp-m6-proyecto.git)
+[![Aplicación desplegada en Render](https://img.shields.io/badge/Render-Aplicaci%C3%B3n%20desplegada-46e3b7?style=for-the-badge&logo=render&logoColor=white)](<URL_DE_RENDER>)
+
+- **Repositorio oficial:** [GitHub - CoreApp Enterprise](https://github.com/rondons-26/abp-m6-proyecto.git)
+- **Aplicación desplegada:** [Render - CoreApp Enterprise](<URL_DE_RENDER>)
 
 ---
 
