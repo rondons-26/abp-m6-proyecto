@@ -1,4 +1,4 @@
-import User from "../models/User.model.js";
+import User from "../models/user.model.js";
 
 // VISTA HOME
 export const homeView = (req, res) => {
